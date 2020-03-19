@@ -1,0 +1,13 @@
+version: '3'
+services:
+  app:
+    build: ./docker/app
+    volumes:
+      - ./App:/home/node/app
+      - ${HOME}/.gradle:/home/node/.gradle
+      - ${HOME}/.cache/yarn:/home/node/.cache/yarn
+      - /opt/android-sdk:/opt/android-sdk
+    user: node
+    command: yarn start
+    ports:
+      - 8081:8081
